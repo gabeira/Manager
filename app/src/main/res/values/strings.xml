@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Manager</string>
+    <string name="app_name" translatable="false">Manager</string>
 
     <string name="action_refresh">Refresh</string>
 
@@ -7,5 +7,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>
+    <string name="login_error">Can not log in, try again!</string>
+
+    <string name="loading">Loading...</string>
 
 </resources>

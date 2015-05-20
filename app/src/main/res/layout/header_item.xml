@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@color/primary_dark"
+    android:orientation="horizontal"
+    app:slm_headerDisplay="inline|sticky"
+    app:slm_isHeader="true"
+    app:slm_section_sectionManager="linear"
+    tools:text="Header Item">
+
+    <TextView
+        android:id="@+id/listText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="Dummy Text"
+        android:textColor="@color/icons"
+        android:textSize="20sp" />
+
+</RelativeLayout>

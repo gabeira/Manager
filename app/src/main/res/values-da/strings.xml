@@ -1,0 +1,12 @@
+<resources>
+    <string name="action_refresh">Opdater</string>
+
+    <string name="title_activity_login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Adgangskode</string>
+    <string name="login">Log in</string>
+    <string name="login_error">Kan ikke logge ind, prøv igen!</string>
+
+    <string name="loading">Lastning...</string>
+
+</resources>
