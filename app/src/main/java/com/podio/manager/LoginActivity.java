@@ -3,12 +3,14 @@ package com.podio.manager;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.podio.manager.task.AuthenticationTask;
+import java.util.Date;
 
 public class LoginActivity extends ActionBarActivity implements AuthenticationTask.Delegate{
 
@@ -20,10 +22,14 @@ public class LoginActivity extends ActionBarActivity implements AuthenticationTa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         app = (ManagerApp) getApplication();
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
+        if (app.isTokenValid() && !app.getToken().isEmpty()){
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
+
+        setContentView(R.layout.activity_login);
 
         email = (EditText) findViewById(R.id.text_email);
         pwd = (EditText) findViewById(R.id.text_pwd);
@@ -38,9 +44,9 @@ public class LoginActivity extends ActionBarActivity implements AuthenticationTa
     }
 
     @Override
-    public void onSuccessAuth(String result) {
-        if (null != result && result.length()>1) {
-            app.token = result;
+    public void onSuccessAuth(Pair<String, Date> result) {
+        if (null != result) {
+            app.saveToken(result);
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }else{

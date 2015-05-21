@@ -1,6 +1,7 @@
 package com.podio.manager;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
@@ -45,7 +46,7 @@ public class MainActivity extends ActionBarActivity implements LoadOrganizationD
         progress = new ProgressDialog(this);
         progress.setMessage(getString(R.string.loading));
         progress.show();
-        new LoadOrganizationDataTask(this).execute(app.token);
+        new LoadOrganizationDataTask(this).execute(app.getToken());
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         adapter = new ManagerListAdapter(new ArrayList<ItemListRow>(0));
@@ -68,7 +69,13 @@ public class MainActivity extends ActionBarActivity implements LoadOrganizationD
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
             progress.show();
-            new LoadOrganizationDataTask(this).execute(app.token);
+            new LoadOrganizationDataTask(this).execute(app.getToken());
+            return true;
+        }
+        if (id == R.id.action_logout) {
+            app.clearTokenData();
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
